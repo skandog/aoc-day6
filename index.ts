@@ -11,10 +11,14 @@ function findStartOfPacketMarker(datastreamBuffer) {
   let lastFourCharacters = "";
   console.log("datastreamBuffer", datastreamBuffer);
   for (let i = 0; i < datastreamBuffer.length; i++) {
+    // Create 4 letter string and move up the string each iteration
     lastFourCharacters = datastreamBuffer.slice(i, i + 4);
-    let letterCount = count(lastFourCharacters);
-    // console.log(Object.keys(letterCount).length);
 
+    // count number of occurances
+    let letterCount = count(lastFourCharacters);
+
+    // If there are mote than 3 letters counted in
+    // length 4 string then they must all be distinct
     if (Object.keys(letterCount).length > 3) {
       console.log(count(lastFourCharacters));
       console.log(i + 4);
